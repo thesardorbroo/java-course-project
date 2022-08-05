@@ -11,4 +11,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class StudentDto {
 
+    private Integer id;
+
+    private String name;
+
+    private Integer age;
+
+    private String gender;
+
+    private String phoneNumber;
 }

@@ -1,8 +1,8 @@
 package CiricleProject.course_platform.repository;
 
-import CiricleProject.course_platform.entity.MentorEntity;
+import CiricleProject.course_platform.entity.Mentor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MentorRepository extends JpaRepository<MentorEntity,Integer> {
+public interface MentorRepository extends JpaRepository<Mentor,Integer> {
 
 }

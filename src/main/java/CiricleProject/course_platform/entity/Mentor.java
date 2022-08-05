@@ -7,25 +7,20 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-
 @Entity
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "student")
-public class StudentEntity {
-
+@Builder
+@Table(name = "mentor")
+public class Mentor {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "mentor_seq")
+    @SequenceGenerator(name = "mentor_seq",sequenceName = "mentor_id_seq",allocationSize = 1)
     private Integer id;
-
     private String name;
-
     private Integer age;
+    private Integer experiense;
 
-    private String gender;
 
-    @Column(name = "phone_number")
-    private String phoneNumber;
 }
