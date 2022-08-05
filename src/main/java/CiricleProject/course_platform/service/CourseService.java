@@ -11,7 +11,7 @@ import java.util.List;
 public interface CourseService {
     /**
     Add new Course to Response<list>
-     * @param CourseDto Info about student
+     * @param /CourseDto Info about student
      * @return ResponseDto - code -1 when exception occurs, 0 when all is OK.
      * */
 
