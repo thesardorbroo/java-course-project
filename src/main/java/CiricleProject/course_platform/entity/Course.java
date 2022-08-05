@@ -1,5 +1,5 @@
 package CiricleProject.course_platform.entity;
 
-public class CourseEntity {
+public class Course {
 
 }

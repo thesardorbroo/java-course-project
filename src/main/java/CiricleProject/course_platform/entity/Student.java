@@ -6,22 +6,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.nio.charset.CodingErrorAction;
+
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@Table(name = "mentor")
-public class MentorEntity {
+@Table(name = "student")
+public class Student {
+
     @Id
-    @GeneratedValue(generator = "mentor_seq")
-    @SequenceGenerator(name = "mentor_seq",sequenceName = "mentor_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String name;
+
     private Integer age;
-    private Integer experiense;
 
+    private String gender;
 
+    @Column(name = "phone_number")
+    private String phoneNumber;
 }
