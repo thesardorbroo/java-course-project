@@ -1,8 +1,6 @@
 package CiricleProject.course_platform.mapper;
 
 import CiricleProject.course_platform.dto.ResponseDto;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 
 //@Configuration

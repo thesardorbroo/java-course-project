@@ -1,4 +1,4 @@
-package CiricleProject.course_platform.service.impl;
+package CiricleProject.course_platform.impl;
 
 import CiricleProject.course_platform.dto.MentorDto;
 import CiricleProject.course_platform.dto.ResponseDto;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 @Service
 @RequiredArgsConstructor
-public class  MentorImpl implements MentorService {
+public class  MentorServiceImpl implements MentorService {
     private final MentorRepository mentorRepository;
     private final MentorMapper mentorMapper;
 

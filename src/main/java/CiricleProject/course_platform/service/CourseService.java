@@ -4,9 +4,6 @@ import CiricleProject.course_platform.dto.CourseDto;
 import CiricleProject.course_platform.dto.ResponseDto;
 
 
-import java.util.List;
-
-
 public interface CourseService {
     /**
     Add new Course to Response<list>

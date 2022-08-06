@@ -2,7 +2,6 @@ package CiricleProject.course_platform.mapper;
 
 import CiricleProject.course_platform.dto.StudentDto;
 import CiricleProject.course_platform.entity.Student;
-import CiricleProject.course_platform.repository.StudentRepository;
 import org.springframework.stereotype.Component;
 
 @Component

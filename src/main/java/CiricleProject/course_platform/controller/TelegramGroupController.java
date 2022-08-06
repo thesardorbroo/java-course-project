@@ -2,17 +2,16 @@ package CiricleProject.course_platform.controller;
 
 import CiricleProject.course_platform.dto.ResponseDto;
 import CiricleProject.course_platform.dto.TelegramGroupDto;
-import CiricleProject.course_platform.service.impl.TelegramGroupImpl;
-import org.hibernate.dialect.Ingres9Dialect;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import CiricleProject.course_platform.impl.TelegramGroupServiceImpl;
 
 @Controller
 @RequestMapping("telegramGroup")
 public class TelegramGroupController {
-    private final TelegramGroupImpl telegramGroup;
+    private final TelegramGroupServiceImpl telegramGroup;
 
-    public TelegramGroupController(TelegramGroupImpl telegramGroup) {
+    public TelegramGroupController(TelegramGroupServiceImpl telegramGroup) {
         this.telegramGroup = telegramGroup;
     }
 

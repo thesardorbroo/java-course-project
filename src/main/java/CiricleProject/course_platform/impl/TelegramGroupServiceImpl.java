@@ -1,4 +1,4 @@
-package CiricleProject.course_platform.service.impl;
+package CiricleProject.course_platform.impl;
 
 import CiricleProject.course_platform.dto.ResponseDto;
 import CiricleProject.course_platform.dto.TelegramGroupDto;
@@ -6,7 +6,7 @@ import CiricleProject.course_platform.entity.TelegramGroup;
 import CiricleProject.course_platform.mapper.ResponseMapper;
 import CiricleProject.course_platform.mapper.TelegramGroupMapper;
 import CiricleProject.course_platform.repository.TelegramGroupRepository;
-import CiricleProject.course_platform.service.TelegramGroupServise;
+import CiricleProject.course_platform.service.TelegramGroupService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class TelegramGroupImpl implements TelegramGroupServise {
+public class TelegramGroupServiceImpl implements TelegramGroupService {
     private final TelegramGroupRepository telegramGroupRepository;
     private final TelegramGroupMapper telegramGroupMapper;
 

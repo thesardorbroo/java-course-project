@@ -1,4 +1,4 @@
-package CiricleProject.course_platform.service.impl;
+package CiricleProject.course_platform.impl;
 
 import CiricleProject.course_platform.dto.LessonDto;
 import CiricleProject.course_platform.dto.ResponseDto;

@@ -2,14 +2,15 @@ package CiricleProject.course_platform.controller;
 
 import CiricleProject.course_platform.dto.MentorDto;
 import CiricleProject.course_platform.dto.ResponseDto;
-import CiricleProject.course_platform.service.impl.MentorImpl;
+
 import org.springframework.web.bind.annotation.*;
+import CiricleProject.course_platform.impl.MentorServiceImpl;
 
 @RestController
 @RequestMapping("mentor")
 public class MentorController {
-    private final MentorImpl mentorimpl;
-    public MentorController(MentorImpl mentorimpl){
+    private final MentorServiceImpl mentorimpl;
+    public MentorController(MentorServiceImpl mentorimpl){
 
         this.mentorimpl = mentorimpl;
     }

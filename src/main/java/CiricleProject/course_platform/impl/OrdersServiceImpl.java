@@ -1,4 +1,4 @@
-package CiricleProject.course_platform.service.impl;
+package CiricleProject.course_platform.impl;
 
 import CiricleProject.course_platform.dto.OrdersDto;
 import CiricleProject.course_platform.dto.ResponseDto;
@@ -8,7 +8,6 @@ import CiricleProject.course_platform.mapper.ResponseMapper;
 import CiricleProject.course_platform.repository.OrdersRepository;
 import CiricleProject.course_platform.service.OrdersService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
