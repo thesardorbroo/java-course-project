@@ -3,6 +3,7 @@ package CiricleProject.course_platform.service.impl;
 import CiricleProject.course_platform.dto.LessonDto;
 import CiricleProject.course_platform.dto.ResponseDto;
 import CiricleProject.course_platform.entity.Lesson;
+import CiricleProject.course_platform.entity.Orders;
 import CiricleProject.course_platform.mapper.LessonMapper;
 import CiricleProject.course_platform.mapper.ResponseMapper;
 import CiricleProject.course_platform.repository.LessonRepository;
@@ -79,5 +80,15 @@ public class LessonServiceImpl implements LessonService {
         }
         return ResponseMapper.getResponseDto(404, false, "Data is not found!", null);
     }
+
+    @Override
+    public ResponseDto addNewLesson(LessonDto lessonDto) {
+        if(!lessonRepository.existsById(lessonDto.getId())){
+            Lesson lesson = lessonRepository.save(lessonMapper.convertToEntity(lessonDto));
+            return ResponseMapper.getResponseDto(200, true, "Successully saved!", lessonMapper.convertToDto(lesson));
+        }
+
+        return ResponseMapper.getResponseDto(404, false, "Data is already exists!", null);
     }
+}
 

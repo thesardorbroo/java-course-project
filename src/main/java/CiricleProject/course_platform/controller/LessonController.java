@@ -2,6 +2,7 @@ package CiricleProject.course_platform.controller;
 
 
 import CiricleProject.course_platform.dto.LessonDto;
+import CiricleProject.course_platform.dto.OrdersDto;
 import CiricleProject.course_platform.dto.ResponseDto;
 
 import CiricleProject.course_platform.service.impl.LessonServiceImpl;
@@ -20,6 +21,11 @@ public class LessonController {
     @GetMapping
     public ResponseDto getAllLessons(){
         return lessontService.getAllLessons();
+    }
+
+    @PostMapping
+    public ResponseDto addNewLesson(@RequestBody LessonDto lessonDto){
+        return lessontService.addNewLesson(lessonDto);
     }
 
     @PutMapping
