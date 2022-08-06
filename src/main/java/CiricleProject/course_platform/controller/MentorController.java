@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class MentorController {
     private final MentorImpl mentorimpl;
     public MentorController(MentorImpl mentorimpl){
+
         this.mentorimpl = mentorimpl;
     }
     @GetMapping
@@ -18,6 +19,7 @@ public class MentorController {
     }
     @GetMapping
     public ResponseDto getMentorByid(@PathVariable Integer id){
+
         return mentorimpl.getMentorById(id);
     }
     @PutMapping

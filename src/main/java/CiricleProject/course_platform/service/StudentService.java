@@ -14,4 +14,6 @@ public interface StudentService {
     ResponseDto updateStudent(StudentDto studentDto);
 
     ResponseDto deleteStudentById(Integer id);
+
+    ResponseDto addNewStudent(StudentDto studentDto);
 }

@@ -14,12 +14,42 @@ public interface CourseService {
      * @return ResponseDto - code -1 when exception occurs, 0 when all is OK.
      * */
 
+    /**
+     * this method add course
+     * @param courseDto
+     * @return ResponseDto
+     */
+
     ResponseDto addCourse(CourseDto courseDto);
 
-    ResponseDto<CourseDto> getCourse();
+    /**
+     * this mthod get course(id)
+     * @param id
+     * @return ResponseDto
+     */
 
+    ResponseDto getById(Integer id);
+
+    /**
+     * this method get all courses
+     * @return ResponseDto
+     */
+
+    ResponseDto  getCourse();
+
+    /**
+     * this method update course
+     * @param courseDto
+     * @return ResponseDto
+     */
 
     ResponseDto updateCourse(CourseDto courseDto);
+
+    /**
+     * this method delete course(id)
+     * @param id
+     * @return ResponseDto
+     */
 
     ResponseDto deleteCourse(Integer id);
 

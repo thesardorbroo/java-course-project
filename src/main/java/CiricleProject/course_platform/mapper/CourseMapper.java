@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class CourseMapper {
 
     /**
-     *
+     * Convert to CourseDto
      * @param course
      * @return CourseDto
      */
@@ -25,7 +25,7 @@ public class CourseMapper {
     }
 
     /**
-     *
+     *  Convert to Course
      * @param courseDto
      * @return Course
      */
