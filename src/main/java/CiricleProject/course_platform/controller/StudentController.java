@@ -21,6 +21,11 @@ public class StudentController {
         return studentService.getAllStudent();
     }
 
+    @PostMapping
+    public ResponseDto addNewStudent(@RequestBody StudentDto studentDto){
+        return studentService.addNewStudent(studentDto);
+    }
+
     @PutMapping
     public ResponseDto updateStudent(StudentDto studentDto){
         return studentService.updateStudent(studentDto);
