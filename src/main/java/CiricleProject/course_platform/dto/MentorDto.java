@@ -18,4 +18,14 @@ public class MentorDto {
     private Integer age;
     private Integer experience;
 
+    @Override
+    public String toString() {
+        return "MentorDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", experience=" + experience +
+                '}';
+    }
+
 }
