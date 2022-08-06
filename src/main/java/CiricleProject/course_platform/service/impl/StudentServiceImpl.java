@@ -75,4 +75,14 @@ public class StudentServiceImpl implements StudentService {
         }
         return ResponseMapper.getResponseDto(404, false, "Data is not found!", null);
     }
+
+    @Override
+    public ResponseDto addNewStudent(StudentDto studentDto) {
+        if (!studentRepository.existsById(studentDto.getId())) {
+            Student student = studentRepository.save(studentMapper.convertToEntity(studentDto));
+            return ResponseMapper.getResponseDto(200, true, "Successully saved!", studentMapper.convertToDto(student));
+        }
+
+        return ResponseMapper.getResponseDto(404, false, "Data is already exists!", null);
+    }
 }
