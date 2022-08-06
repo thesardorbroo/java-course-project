@@ -30,7 +30,7 @@ public class Course {
     @Column(name = "course_price")
     private Double coursePrice;
 
-    private String status;
+    private Boolean status;
 
     private Integer during;
 }

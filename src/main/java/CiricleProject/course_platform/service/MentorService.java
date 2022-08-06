@@ -2,9 +2,11 @@ package CiricleProject.course_platform.service;
 
 import CiricleProject.course_platform.dto.MentorDto;
 import CiricleProject.course_platform.dto.ResponseDto;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
 public interface MentorService {
-    ResponseDto<MentorDto> addNewMentor(MentorDto mentorDto);
+    ResponseDto addNewMentor(MentorDto mentorDto);
     ResponseDto getAllMentor();
     ResponseDto getMentorById(Integer id);
 

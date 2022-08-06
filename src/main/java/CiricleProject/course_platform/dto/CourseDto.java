@@ -11,7 +11,7 @@ public class CourseDto {
     private Integer mentorId;
     private Double coursePrice;
     private Integer during;
-    private String status;
+    private Boolean status;
 
     @Override
     public String toString() {
