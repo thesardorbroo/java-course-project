@@ -26,7 +26,7 @@ public class MentorController {
     }
     @DeleteMapping
     public ResponseDto deleteMentor(@PathVariable Integer id){
-        mentorimpl.daleteMentorById(id);
+        return mentorimpl.daleteMentorById(id);
 
     }
 
