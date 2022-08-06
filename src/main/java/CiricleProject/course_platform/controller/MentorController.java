@@ -27,7 +27,10 @@ public class MentorController {
     @DeleteMapping
     public ResponseDto deleteMentor(@PathVariable Integer id){
         return mentorimpl.daleteMentorById(id);
-
+    }
+    @PatchMapping
+    public ResponseDto addTelegramGroup(@RequestBody MentorDto mentorDto){
+        return mentorimpl.addNewMentor(mentorDto);
     }
 
 }

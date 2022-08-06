@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public interface MentorService {
+    ResponseDto addNewMentor(MentorDto mentorDto);
     ResponseDto getAllMentor();
     ResponseDto getMentorById(Integer id);
 

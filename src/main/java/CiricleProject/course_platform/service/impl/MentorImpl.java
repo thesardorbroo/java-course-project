@@ -19,6 +19,25 @@ public class  MentorImpl implements MentorService {
     private final MentorMapper mentorMapper;
 
     @Override
+    public ResponseDto addNewMentor(MentorDto mentorDto) {
+        if(!mentorRepository.existsById(mentorDto.getId())){
+            Mentor mentor = mentorRepository.save(mentorMapper.converToEntity(mentorDto));
+                 return ResponseMapper.getResponseDto(
+                    200,
+                    true,
+                    "Successully saved",
+                         mentorMapper.convertToDto(mentor));
+
+        }
+        return ResponseMapper.getResponseDto(
+                200,
+                true,
+                "Data is already exists",
+                null);
+
+    }
+
+    @Override
     public ResponseDto getAllMentor() {
         List<Mentor> mentors = mentorRepository.findAll();
         List<MentorDto> list =  mentors.stream()
