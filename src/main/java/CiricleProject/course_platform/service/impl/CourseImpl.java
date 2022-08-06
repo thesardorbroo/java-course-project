@@ -67,12 +67,35 @@ public class CourseImpl implements CourseService {
     @Override
     public ResponseDto updateCourse(CourseDto courseDto) {
 
-        return null;
+        Optional<Course> optional = courseRepository.findById(courseDto.getId());
+        if(optional.isPresent()){
+            Course course = optional.get();
+            CourseDto courseDto1 = CourseDto.builder()
+                    .id(courseDto.getId() != null? courseDto.getId() : course.getId())
+                    .courseName(courseDto.getCourseName() != null? courseDto.getCourseName() : course.getCourseName())
+                    .mentorId(courseDto.getMentorId() != null? courseDto.getMentorId() : course.getMentorId())
+                    .status(courseDto.getStatus() != null? courseDto.getStatus() : course.getStatus())
+                    .coursePrice((courseDto.getCoursePrice() != null? courseDto.getCoursePrice() : course.getCoursePrice()))
+                    .build();
+
+            return ResponseMapper.getResponseDto(200, true, "Data is updated!", courseDto1);
+        }
+
+        return ResponseMapper.getResponseDto(404, false, "Data is not found!", null);
     }
 
     @Override
     public ResponseDto deleteCourse(Integer id) {
+        if(courseRepository.existsById(id)){
+            Course course = courseRepository.findById(id).get();
+            courseRepository.delete(course);
+            return ResponseMapper.getResponseDto(
+                    200,
+                    true,
+                    "Data is deleted!",
+                    courseMapper.convertToDto(course));
 
-        return null;
+        }
+        return ResponseMapper.getResponseDto(404, false, "Data is not found!", null);
     }
 }
