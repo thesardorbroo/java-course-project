@@ -4,7 +4,7 @@ import CiricleProject.course_platform.dto.MentorDto;
 import CiricleProject.course_platform.dto.ResponseDto;
 
 import org.springframework.web.bind.annotation.*;
-import CiricleProject.course_platform.impl.MentorServiceImpl;
+import CiricleProject.course_platform.service.impl.MentorServiceImpl;
 
 @RestController
 @RequestMapping("mentor")

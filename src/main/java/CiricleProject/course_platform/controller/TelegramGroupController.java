@@ -4,7 +4,7 @@ import CiricleProject.course_platform.dto.ResponseDto;
 import CiricleProject.course_platform.dto.TelegramGroupDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import CiricleProject.course_platform.impl.TelegramGroupServiceImpl;
+import CiricleProject.course_platform.service.impl.TelegramGroupServiceImpl;
 
 @Controller
 @RequestMapping("telegramGroup")

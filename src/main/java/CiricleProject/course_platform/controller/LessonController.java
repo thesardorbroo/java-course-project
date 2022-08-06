@@ -4,7 +4,7 @@ package CiricleProject.course_platform.controller;
 import CiricleProject.course_platform.dto.LessonDto;
 import CiricleProject.course_platform.dto.ResponseDto;
 
-import CiricleProject.course_platform.impl.LessonServiceImpl;
+import CiricleProject.course_platform.service.impl.LessonServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

@@ -2,7 +2,7 @@ package CiricleProject.course_platform.controller;
 
 import CiricleProject.course_platform.dto.CourseDto;
 import CiricleProject.course_platform.dto.ResponseDto;
-import CiricleProject.course_platform.impl.CourseImpl;
+import CiricleProject.course_platform.service.impl.CourseImpl;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
