@@ -19,21 +19,30 @@ public class CourseController {
 
     @PostMapping
     public ResponseDto addCourse(CourseDto courseDto){
+
         return courseimpl.addCourse(courseDto);
     }
 
+    @GetMapping("/{id}")
+    public ResponseDto getById(@PathVariable Integer id){
+        return courseimpl.getById(id);
+    }
+
     @GetMapping
-    public ResponseDto<CourseDto> getCourse(){
+    public ResponseDto getCourse(){
+
         return courseimpl.getCourse();
     }
 
     @PatchMapping
     public ResponseDto updateCourse(CourseDto courseDto){
+
         return courseimpl.updateCourse(courseDto);
     }
 
     @DeleteMapping
     public ResponseDto deleteCourse(Integer id){
+
         return courseimpl.deleteCourse(id);
     }
 
