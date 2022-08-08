@@ -11,15 +11,18 @@ public class LessonModelMapper {
     private final ModelMapper mapper;
 
     public LessonModelMapper() {
+
         this.mapper = new ModelMapper();
     }
 
 
     public LessonDto toDto(Lesson lesson){
+
         return mapper.map(lesson, LessonDto.class);
     }
 
     public Lesson toEntity(LessonDto lessonDto){
+
         return mapper.map(lessonDto, Lesson.class);
     }
 }
