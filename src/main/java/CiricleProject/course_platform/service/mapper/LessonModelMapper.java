@@ -15,7 +15,6 @@ public class LessonModelMapper {
         this.mapper = new ModelMapper();
     }
 
-
     public LessonDto toDto(Lesson lesson){
 
         return mapper.map(lesson, LessonDto.class);

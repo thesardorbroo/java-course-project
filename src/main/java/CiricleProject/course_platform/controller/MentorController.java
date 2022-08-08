@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import CiricleProject.course_platform.service.impl.MentorServiceImpl;
 
 @RestController
-@RequestMapping("mentor")
+@RequestMapping("/mentor")
 public class MentorController {
     private final MentorServiceImpl mentorimpl;
     public MentorController(MentorServiceImpl mentorimpl){
@@ -18,7 +18,7 @@ public class MentorController {
     public ResponseDto getAllMentor(){
         return  mentorimpl.getAllMentor();
     }
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseDto getMentorByid(@PathVariable Integer id){
 
         return mentorimpl.getMentorById(id);

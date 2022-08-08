@@ -7,12 +7,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
-@RequestMapping("homeWork")
+@RequestMapping("/homeWork")
 public class HomeWorkController {
     private final HomeWorkServiceImpl homeWorkService;
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseDto getHomeWorkById(@PathVariable Integer id){
       return   homeWorkService.getHomeWorkById(id);
     }

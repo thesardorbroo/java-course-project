@@ -18,9 +18,6 @@ import java.util.Optional;
 public class HomeWorkServiceImpl implements HomeWorkServise {
     private final HomeWorkRepository homeWorkRepository;
     private final HomeWorkMapper homeWorkMapper;
-
-
-
     @Override
     public ResponseDto getAllHomeWork() {
         List<HomeWork> homeWork = homeWorkRepository.findAll();

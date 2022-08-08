@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/lesson")
 public class LessonController {
     private final LessonServiceImpl lessontService;
     @GetMapping("{id}")

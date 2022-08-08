@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import CiricleProject.course_platform.service.impl.TelegramGroupServiceImpl;
 
 @Controller
-@RequestMapping("telegramGroup")
+@RequestMapping("/telegram-group")
 public class TelegramGroupController {
     private final TelegramGroupServiceImpl telegramGroup;
 
@@ -19,7 +19,7 @@ public class TelegramGroupController {
     public ResponseDto getAllTelegramGroup(){
         return telegramGroup.getAllTelegramGroup();
     }
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseDto getByIdTelegramGroup(@PathVariable Integer id){
         return telegramGroup.getByIdTelegramGroup(id);
     }

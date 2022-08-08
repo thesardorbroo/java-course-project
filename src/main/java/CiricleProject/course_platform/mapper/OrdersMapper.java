@@ -5,7 +5,8 @@ import CiricleProject.course_platform.entity.Orders;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OrdersMapper {
+public class
+OrdersMapper {
 
     public OrdersDto convertToDto(Orders orders){
         return OrdersDto.builder()
@@ -22,6 +23,7 @@ public class OrdersMapper {
                 .courseId(ordersDto.getCourseId())
                 .studentId(ordersDto.getStudentId())
                 .isPaid(ordersDto.getIsPaid())
+
                 .build();
     }
 }
