@@ -8,7 +8,6 @@ import CiricleProject.course_platform.mapper.LessonMapper;
 import CiricleProject.course_platform.mapper.ResponseMapper;
 import CiricleProject.course_platform.repository.LessonRepository;
 import CiricleProject.course_platform.service.LessonService;
-import CiricleProject.course_platform.service.mapper.LessonModelMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,14 +23,12 @@ public class LessonServiceImpl implements LessonService {
 
     private final LessonMapper lessonMapper;
 
-    private final LessonModelMapper mapper;
 
     @Override
     public ResponseDto getLessonById(Integer id) {
         Optional<Lesson> optional = lessonRepository.findById(id);
         if(optional.isPresent()){
             Lesson lesson = optional.get();
-            LessonDto sardorLessonDto = mapper.toDto(lesson);
             LessonDto lessonDto = lessonMapper.convertToDto(lesson);
             return ResponseMapper.getResponseDto(200,true, "Data is found!", lessonDto);
         }

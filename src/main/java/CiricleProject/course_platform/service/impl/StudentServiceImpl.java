@@ -4,7 +4,7 @@ import CiricleProject.course_platform.dto.ResponseDto;
 import CiricleProject.course_platform.dto.StudentDto;
 import CiricleProject.course_platform.entity.Student;
 import CiricleProject.course_platform.mapper.ResponseMapper;
-import CiricleProject.course_platform.mapper.StudentMapper;
+import CiricleProject.course_platform.service.mapper.StudentMapper;
 import CiricleProject.course_platform.repository.StudentRepository;
 import CiricleProject.course_platform.service.StudentService;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,7 @@ public class StudentServiceImpl implements StudentService {
         Optional<Student> optional = studentRepository.findById(id);
         if(optional.isPresent()){
             Student student = optional.get();
-            StudentDto studentDto = studentMapper.convertToDto(student);
+            StudentDto studentDto = studentMapper.toDto(student);
             return ResponseMapper.getResponseDto(200,true, "Data is found!", studentDto);
         }
 
@@ -37,7 +37,7 @@ public class StudentServiceImpl implements StudentService {
     public ResponseDto getAllStudent() {
         List<Student> students = studentRepository.findAll();
         List<StudentDto> list = students.stream()
-                .map(studentMapper::convertToDto).toList();
+                .map(studentMapper::toDto).toList();
 
         return ResponseMapper.getResponseDto(200, true, "Data is found!", list);
     }
@@ -70,7 +70,7 @@ public class StudentServiceImpl implements StudentService {
                     200,
                     true,
                     "Data is deleted!",
-                    studentMapper.convertToDto(student));
+                    studentMapper.toDto(student));
 
         }
         return ResponseMapper.getResponseDto(404, false, "Data is not found!", null);
@@ -79,8 +79,8 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public ResponseDto addNewStudent(StudentDto studentDto) {
         if (!studentRepository.existsById(studentDto.getId())) {
-            Student student = studentRepository.save(studentMapper.convertToEntity(studentDto));
-            return ResponseMapper.getResponseDto(200, true, "Successully saved!", studentMapper.convertToDto(student));
+            Student student = studentRepository.save(studentMapper.toEntity(studentDto));
+            return ResponseMapper.getResponseDto(200, true, "Successully saved!", studentMapper.toDto(student));
         }
 
         return ResponseMapper.getResponseDto(404, false, "Data is already exists!", null);
