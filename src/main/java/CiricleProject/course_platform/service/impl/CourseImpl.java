@@ -3,10 +3,10 @@ package CiricleProject.course_platform.service.impl;
 import CiricleProject.course_platform.dto.CourseDto;
 import CiricleProject.course_platform.dto.ResponseDto;
 import CiricleProject.course_platform.entity.Course;
-import CiricleProject.course_platform.mapper.CourseMapper;
 import CiricleProject.course_platform.mapper.ResponseMapper;
 import CiricleProject.course_platform.repository.CourseRepository;
 import CiricleProject.course_platform.service.CourseService;
+import CiricleProject.course_platform.service.mapper.CourseMapperImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,23 +18,16 @@ import java.util.Optional;
 public class CourseImpl implements CourseService {
 
     private  CourseRepository courseRepository;
-    private final CourseMapper courseMapper;
+    private final CourseMapperImpl courseMapper;
 
 
     @Override
     public ResponseDto addCourse(CourseDto courseDto) {
-        Course course = Course.builder()
-                .id(courseDto.getId())
-                .courseName(courseDto.getCourseName())
-                .mentorId(courseDto.getMentorId())
-                .coursePrice(courseDto.getCoursePrice())
-                .during(courseDto.getDuring())
-                .status(courseDto.getStatus())
-                .build();
+        Course course = courseMapper.toCourse(courseDto);
 
-            courseRepository.save(course);
+        courseRepository.save(course);
 
-            return ResponseMapper.getResponseDto(200,true,"Succcesfuly add course",course);
+        return ResponseMapper.getResponseDto(200,true,"Succcesfuly add course",course);
     }
 
 
@@ -44,7 +37,7 @@ public class CourseImpl implements CourseService {
         Optional<Course> optional = courseRepository.findById(id);
         if (optional.isPresent()){
             Course course = optional.get();
-            CourseDto courseDto = courseMapper.convertToDto(course);
+            CourseDto courseDto = courseMapper.toDto(course);
             return ResponseMapper.getResponseDto(200,true, "Data is found!", courseDto);
         }
 
@@ -59,7 +52,7 @@ public class CourseImpl implements CourseService {
 
         List<Course> courses = courseRepository.findAll();
         List<CourseDto> courseDtos = courses.stream()
-                .map(courseMapper::convertToDto).toList();
+                .map(courseMapper::toDto).toList();
         return ResponseMapper.getResponseDto(200,true, "Data is found!", courseDtos);
 
     }
@@ -93,7 +86,7 @@ public class CourseImpl implements CourseService {
                     200,
                     true,
                     "Data is deleted!",
-                    courseMapper.convertToDto(course));
+                    courseMapper.toDto(course));
 
         }
         return ResponseMapper.getResponseDto(404, false, "Data is not found!", null);
