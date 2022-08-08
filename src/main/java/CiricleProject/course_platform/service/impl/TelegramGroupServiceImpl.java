@@ -4,9 +4,9 @@ import CiricleProject.course_platform.dto.ResponseDto;
 import CiricleProject.course_platform.dto.TelegramGroupDto;
 import CiricleProject.course_platform.entity.TelegramGroup;
 import CiricleProject.course_platform.mapper.ResponseMapper;
-import CiricleProject.course_platform.mapper.TelegramGroupMapper;
 import CiricleProject.course_platform.repository.TelegramGroupRepository;
 import CiricleProject.course_platform.service.TelegramGroupService;
+import CiricleProject.course_platform.service.mapper.TelegramGroupMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,18 +16,18 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class TelegramGroupServiceImpl implements TelegramGroupService {
-    private final TelegramGroupRepository telegramGroupRepository;
     private final TelegramGroupMapper telegramGroupMapper;
+    private final TelegramGroupRepository telegramGroupRepository;
 
     @Override
     public ResponseDto addNewTelegramGroup(TelegramGroupDto telegramGroupDto) {
         if(!telegramGroupRepository.existsById(telegramGroupDto.getId())){
-            TelegramGroup telegramGroup = telegramGroupRepository.save(telegramGroupMapper.converToEntity(telegramGroupDto));
+            TelegramGroup telegramGroup = telegramGroupRepository.save(telegramGroupMapper.toEntity(telegramGroupDto));
             return ResponseMapper.getResponseDto(
                     200,
                     true,
                     "Successully saved",
-                    telegramGroupMapper.convertToDto(telegramGroup));
+                    telegramGroupMapper.ToDto(telegramGroup));
         }
         return ResponseMapper.getResponseDto(
                 404,
@@ -41,7 +41,7 @@ public class TelegramGroupServiceImpl implements TelegramGroupService {
     public ResponseDto getAllTelegramGroup() {
         List<TelegramGroup> list = telegramGroupRepository.findAll();
         List<TelegramGroupDto> telegramGroupDtos = list.stream()
-                .map(telegramGroupMapper::convertToDto).toList();
+                .map(telegramGroupMapper::ToDto).toList();
         return ResponseMapper.getResponseDto(
                 200,
                 true,
@@ -54,7 +54,7 @@ public class TelegramGroupServiceImpl implements TelegramGroupService {
         Optional<TelegramGroup> optional = telegramGroupRepository.findById(id);
         if(optional.isPresent()){
             TelegramGroup telegramGroup = optional.get();
-            TelegramGroupDto telegramGroupDto = telegramGroupMapper.convertToDto(telegramGroup);
+            TelegramGroupDto telegramGroupDto = telegramGroupMapper.ToDto(telegramGroup);
             return ResponseMapper.getResponseDto(
                     200,
                     true,
@@ -104,7 +104,7 @@ public class TelegramGroupServiceImpl implements TelegramGroupService {
                     200,
                     true,
                     "Data is found",
-                    telegramGroupMapper.convertToDto(telegramGroup)
+                    telegramGroupMapper.ToDto(telegramGroup)
             );
         }
         return ResponseMapper.getResponseDto(

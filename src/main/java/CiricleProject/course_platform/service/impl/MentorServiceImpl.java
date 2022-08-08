@@ -3,10 +3,10 @@ package CiricleProject.course_platform.service.impl;
 import CiricleProject.course_platform.dto.MentorDto;
 import CiricleProject.course_platform.dto.ResponseDto;
 import CiricleProject.course_platform.entity.Mentor;
-import CiricleProject.course_platform.mapper.MentorMapper;
 import CiricleProject.course_platform.mapper.ResponseMapper;
 import CiricleProject.course_platform.repository.MentorRepository;
 import CiricleProject.course_platform.service.MentorService;
+import CiricleProject.course_platform.service.mapper.MentorMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,12 +21,12 @@ public class  MentorServiceImpl implements MentorService {
     @Override
     public ResponseDto addNewMentor(MentorDto mentorDto) {
         if(!mentorRepository.existsById(mentorDto.getId())){
-            Mentor mentor = mentorRepository.save(mentorMapper.converToEntity(mentorDto));
+            Mentor mentor = mentorRepository.save(mentorMapper.toEntity(mentorDto));
                  return ResponseMapper.getResponseDto(
                     200,
                     true,
                     "Successully saved",
-                         mentorMapper.convertToDto(mentor));
+                         mentorMapper.ToDto(mentor));
 
         }
         return ResponseMapper.getResponseDto(
@@ -41,7 +41,7 @@ public class  MentorServiceImpl implements MentorService {
     public ResponseDto getAllMentor() {
         List<Mentor> mentors = mentorRepository.findAll();
         List<MentorDto> list =  mentors.stream()
-                .map(mentorMapper::convertToDto).toList();
+                .map(mentorMapper::ToDto).toList();
         return ResponseMapper.getResponseDto(200,true,"Date is found",list);
     }
 
@@ -50,7 +50,7 @@ public class  MentorServiceImpl implements MentorService {
         Optional<Mentor> optional = mentorRepository.findById(id);
         if(optional.isPresent()){
             Mentor mentor =  optional.get();
-            MentorDto mentorDto = mentorMapper.convertToDto(mentor);
+            MentorDto mentorDto = mentorMapper.ToDto(mentor);
             return ResponseMapper.getResponseDto(200,true,"Date is found", mentorDto);
         }
         return ResponseMapper.getResponseDto(404,false,"Date is not found",null);
@@ -80,7 +80,7 @@ public class  MentorServiceImpl implements MentorService {
             mentorRepository.delete(mentor);
             return ResponseMapper.getResponseDto(200,
                     true,"Data is deleted!",
-                    mentorMapper.convertToDto(mentor));
+                    mentorMapper.ToDto(mentor));
         }
         return ResponseMapper.getResponseDto(404,
                 false,
