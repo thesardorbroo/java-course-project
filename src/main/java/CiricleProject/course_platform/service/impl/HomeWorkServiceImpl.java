@@ -3,9 +3,9 @@ package CiricleProject.course_platform.service.impl;
 import CiricleProject.course_platform.dto.HomeWorkDto;
 import CiricleProject.course_platform.dto.ResponseDto;
 import CiricleProject.course_platform.entity.HomeWork;
-import CiricleProject.course_platform.mapper.HomeWorkMapper;
 import CiricleProject.course_platform.mapper.ResponseMapper;
 import CiricleProject.course_platform.repository.HomeWorkRepository;
+import CiricleProject.course_platform.service.mapper.HomeWorkMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import CiricleProject.course_platform.service.HomeWorkServise;
@@ -22,7 +22,7 @@ public class HomeWorkServiceImpl implements HomeWorkServise {
     public ResponseDto getAllHomeWork() {
         List<HomeWork> homeWork = homeWorkRepository.findAll();
         List<HomeWorkDto> list = homeWork.stream()
-                .map(homeWorkMapper::convertToDto).toList();
+                .map(homeWorkMapper::ToDto).toList();
         return ResponseMapper.getResponseDto(
                 200,
                 true,
@@ -36,7 +36,7 @@ public class HomeWorkServiceImpl implements HomeWorkServise {
         Optional<HomeWork> optional = homeWorkRepository.findById(id);
         if(optional.isPresent()){
             HomeWork homeWork = optional.get();
-            HomeWorkDto homeWorkDto = homeWorkMapper.convertToDto(homeWork);
+            HomeWorkDto homeWorkDto = homeWorkMapper.ToDto(homeWork);
             return ResponseMapper.getResponseDto(
                     200,
                     true,
@@ -89,7 +89,7 @@ public class HomeWorkServiceImpl implements HomeWorkServise {
                     200,
                     true,
                     "Data is deleted",
-                    homeWorkMapper.convertToDto(homeWork)
+                    homeWorkMapper.ToDto(homeWork)
             );
         }
         return ResponseMapper.getResponseDto(
@@ -103,12 +103,12 @@ public class HomeWorkServiceImpl implements HomeWorkServise {
     @Override
     public ResponseDto addNewHomeWork(HomeWorkDto homeWorkDto) {
         if(!homeWorkRepository.existsById(homeWorkDto.getId())){
-            HomeWork homeWork = homeWorkRepository.save(homeWorkMapper.convertToEntity(homeWorkDto));
+            HomeWork homeWork = homeWorkRepository.save(homeWorkMapper.ToEntity(homeWorkDto));
             return ResponseMapper.getResponseDto(
                     200,
                     true,
                     "Successully saved",
-                    homeWorkMapper.convertToDto(homeWork)
+                    homeWorkMapper.ToDto(homeWork)
             );
 
         }
