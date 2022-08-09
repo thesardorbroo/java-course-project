@@ -17,6 +17,7 @@ public class MentorDto {
     private String name;
     private Integer age;
     private Integer experience;
+    private String key;
 
     @Override
     public String toString() {
@@ -25,6 +26,7 @@ public class MentorDto {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", experience=" + experience +
+                ", key=" + key +
                 '}';
     }
 

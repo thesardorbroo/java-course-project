@@ -8,15 +8,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/course")
+@RequiredArgsConstructor
 public class  CourseController {
 
 
     private final CourseImpl courseimpl;
 
-
-    public CourseController(CourseImpl courseimpl) {
-        this.courseimpl = courseimpl;
-    }
 
     @PostMapping
     public ResponseDto addCourse(@RequestBody CourseDto courseDto){

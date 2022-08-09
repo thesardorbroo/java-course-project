@@ -20,7 +20,7 @@ public class  MentorServiceImpl implements MentorService {
 
     @Override
     public ResponseDto addNewMentor(MentorDto mentorDto) {
-        if(!mentorRepository.existsById(mentorDto.getId())){
+        if(!mentorRepository.existsByKey(mentorDto.getKey())){
             Mentor mentor = mentorRepository.save(mentorMapper.toEntity(mentorDto));
                  return ResponseMapper.getResponseDto(
                     200,

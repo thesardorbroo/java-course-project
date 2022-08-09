@@ -20,7 +20,9 @@ public class Mentor {
     private Integer id;
     private String name;
     private Integer age;
-    private Integer experiense;
+    private Integer experience;
+    @Column(unique = true)
+    private String key;
 
 
 }

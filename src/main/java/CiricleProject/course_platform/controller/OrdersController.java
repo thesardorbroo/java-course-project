@@ -10,19 +10,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/orders")
 @RequiredArgsConstructor
 public class OrdersController {
-
     private final OrdersServiceImpl ordersService;
-
     @GetMapping("/{id}")
     public ResponseDto getOrdersById(@PathVariable Integer id){
         return ordersService.getOrdersById(id);
     }
-
     @GetMapping
     public ResponseDto getAllOrders(){
         return ordersService.getAllOrders();
     }
-
     @PostMapping
     public ResponseDto addNewOrders(@RequestBody OrdersDto ordersDto){
         return ordersService.addNewOrders(ordersDto);
