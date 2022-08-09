@@ -3,11 +3,12 @@ package CiricleProject.course_platform.controller;
 import CiricleProject.course_platform.dto.CourseDto;
 import CiricleProject.course_platform.dto.ResponseDto;
 import CiricleProject.course_platform.service.impl.CourseImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(name = "course")
-public class CourseController {
+public class  CourseController {
 
 
     private final CourseImpl courseimpl;

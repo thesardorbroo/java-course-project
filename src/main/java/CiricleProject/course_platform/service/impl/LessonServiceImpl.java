@@ -3,11 +3,10 @@ package CiricleProject.course_platform.service.impl;
 import CiricleProject.course_platform.dto.LessonDto;
 import CiricleProject.course_platform.dto.ResponseDto;
 import CiricleProject.course_platform.entity.Lesson;
-import CiricleProject.course_platform.entity.Orders;
-import CiricleProject.course_platform.mapper.LessonMapper;
 import CiricleProject.course_platform.mapper.ResponseMapper;
 import CiricleProject.course_platform.repository.LessonRepository;
 import CiricleProject.course_platform.service.LessonService;
+import CiricleProject.course_platform.service.mapper.LessonMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +28,7 @@ public class LessonServiceImpl implements LessonService {
         Optional<Lesson> optional = lessonRepository.findById(id);
         if(optional.isPresent()){
             Lesson lesson = optional.get();
-            LessonDto lessonDto = lessonMapper.convertToDto(lesson);
+            LessonDto lessonDto = lessonMapper.toDto(lesson);
             return ResponseMapper.getResponseDto(200,true, "Data is found!", lessonDto);
         }
 
@@ -40,7 +39,7 @@ public class LessonServiceImpl implements LessonService {
     @Override
     public ResponseDto getAllLessons() {
         List<Lesson> lessons = lessonRepository.findAll();
-        List<LessonDto> list = lessons.stream().map(lessonMapper::convertToDto).toList();
+        List<LessonDto> list = lessons.stream().map(lessonMapper::toDto).toList();
         if(list != null){
             return ResponseMapper.getResponseDto(200, true, "Data is found!", list);
 
@@ -76,7 +75,7 @@ public class LessonServiceImpl implements LessonService {
                     200,
                     true,
                     "Data is deleted!",
-                    lessonMapper.convertToDto(lesson));
+                    lessonMapper.toDto(lesson));
 
         }
         return ResponseMapper.getResponseDto(404, false, "Data is not found!", null);
@@ -85,8 +84,8 @@ public class LessonServiceImpl implements LessonService {
     @Override
     public ResponseDto addNewLesson(LessonDto lessonDto) {
         if(!lessonRepository.existsById(lessonDto.getId())){
-            Lesson lesson = lessonRepository.save(lessonMapper.convertToEntity(lessonDto));
-            return ResponseMapper.getResponseDto(200, true, "Successully saved!", lessonMapper.convertToDto(lesson));
+            Lesson lesson = lessonRepository.save(lessonMapper.toEntity(lessonDto));
+            return ResponseMapper.getResponseDto(200, true, "Successully saved!", lessonMapper.toDto(lesson));
         }
 
         return ResponseMapper.getResponseDto(404, false, "Data is already exists!", null);
