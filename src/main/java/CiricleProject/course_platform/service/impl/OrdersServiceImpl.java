@@ -3,6 +3,8 @@ package CiricleProject.course_platform.service.impl;
 import CiricleProject.course_platform.dto.OrdersDto;
 import CiricleProject.course_platform.dto.ResponseDto;
 import CiricleProject.course_platform.entity.Orders;
+import CiricleProject.course_platform.repository.CourseRepository;
+import CiricleProject.course_platform.repository.StudentRepository;
 import CiricleProject.course_platform.service.mapper.OrdersMapper;
 import CiricleProject.course_platform.mapper.ResponseMapper;
 import CiricleProject.course_platform.repository.OrdersRepository;
@@ -17,6 +19,10 @@ import java.util.List;
 public class OrdersServiceImpl implements OrdersService {
 
     private final OrdersRepository ordersRepository;
+
+    private final StudentRepository studentRepository;
+
+    private final CourseRepository courseRepository;
 
     private final OrdersMapper ordersMapper;
 
@@ -79,5 +85,18 @@ public class OrdersServiceImpl implements OrdersService {
         }
 
         return ResponseMapper.getResponseDto(404, false, "Data is already exists!", null);
+    }
+
+    @Override
+    public ResponseDto buyCourse(Integer studentId ,Integer courseId) {
+        boolean course = courseRepository.existsById(courseId);
+        boolean student = studentRepository.existsById(studentId);
+
+        if(!course) return ResponseMapper.getResponseDto(404, false, "Course is not found!", null);
+        if(!student) return ResponseMapper.getResponseDto(404, false, "Student is not found!", null);
+
+        Orders orders = Orders.builder().studentId(studentId).courseId(courseId).isPaid(true).build();
+        orders = ordersRepository.save(orders);
+        return ResponseMapper.getResponseDto(200, false, "Successfully sold!", ordersMapper.toDto(orders));
     }
 }

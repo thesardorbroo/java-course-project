@@ -20,4 +20,8 @@ public class StudentDto {
     private String gender;
 
     private String phoneNumber;
+
+    private String username;
+
+    private String password;
 }

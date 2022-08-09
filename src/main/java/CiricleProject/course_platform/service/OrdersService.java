@@ -16,4 +16,5 @@ public interface OrdersService {
 
     ResponseDto addNewOrders(OrdersDto ordersDto);
 
+    ResponseDto buyCourse(Integer studentId ,Integer courseId);
 }

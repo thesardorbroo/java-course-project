@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(name = "/result")
+@RequestMapping("/result")
 public class ResultController {
     private final ResultImpl result;
 
@@ -28,7 +28,7 @@ public class ResultController {
         return result.getAllResult();
     }
 
-    @PostMapping
+    @PutMapping
     public ResponseDto updateResult(@RequestBody ResultDto resultDto){
         return result.updateResult(resultDto);
     }

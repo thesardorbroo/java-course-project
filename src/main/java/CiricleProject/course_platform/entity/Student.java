@@ -28,4 +28,9 @@ public class Student {
 
     @Column(name = "phone_number")
     private String phoneNumber;
+
+    @Column(unique = true, nullable = false)
+    private String username;
+
+    private String password;
 }

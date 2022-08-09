@@ -37,4 +37,9 @@ public class OrdersController {
     public ResponseDto deleteOrders(@PathVariable Integer id){
         return ordersService.deleteOrdersById(id);
     }
+
+    @GetMapping("/buy/{student_id}/{course_id}")
+    public ResponseDto buyCourse(@PathVariable Integer student_id, @PathVariable Integer course_id){
+        return ordersService.buyCourse(student_id, course_id);
+    }
 }

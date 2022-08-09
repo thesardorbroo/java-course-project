@@ -78,7 +78,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public ResponseDto addNewStudent(StudentDto studentDto) {
-        if (!studentRepository.existsById(studentDto.getId())) {
+        if (!studentRepository.existsByUsername(studentDto.getUsername())) {
             Student student = studentRepository.save(studentMapper.toEntity(studentDto));
             return ResponseMapper.getResponseDto(200, true, "Successully saved!", studentMapper.toDto(student));
         }

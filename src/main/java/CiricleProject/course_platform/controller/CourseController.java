@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(name = "course")
+@RequestMapping("/course")
 public class  CourseController {
 
 
@@ -19,7 +19,7 @@ public class  CourseController {
     }
 
     @PostMapping
-    public ResponseDto addCourse(CourseDto courseDto){
+    public ResponseDto addCourse(@RequestBody CourseDto courseDto){
 
         return courseimpl.addCourse(courseDto);
     }

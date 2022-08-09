@@ -17,17 +17,22 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CourseImpl implements CourseService {
 
-    private  CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
     private final CourseMapperImpl courseMapper;
 
 
     @Override
     public ResponseDto addCourse(CourseDto courseDto) {
-        Course course = courseMapper.toCourse(courseDto);
+        System.out.println(courseDto);
+        if (!courseRepository.existsByCourseName(courseDto.getCourseName())) {
+            Course course = courseMapper.toCourse(courseDto);
+            courseRepository.save(course);
 
-        courseRepository.save(course);
+            return ResponseMapper.getResponseDto(200, true, "Succcesfuly add course", course);
 
-        return ResponseMapper.getResponseDto(200,true,"Succcesfuly add course",course);
+        }
+
+        return ResponseMapper.getResponseDto(404, false, "Data is already exists!", null);
     }
 
 
