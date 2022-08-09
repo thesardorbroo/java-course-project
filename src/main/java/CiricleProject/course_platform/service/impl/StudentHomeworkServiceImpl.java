@@ -54,10 +54,10 @@ public class StudentHomeworkServiceImpl implements StudentHomeworkService {
         if (optional.isPresent()){
             StudentHomework studentHomework = optional.get();
             StudentHomeworkDto studentHomeworkDto1 = StudentHomeworkDto.builder()
-                    .id(studentHomework.getId() != null ? studentHomeworkDto.getId() : studentHomework.getId())
-                    .studentId(studentHomework.getStudentId() != null ? studentHomeworkDto.getStudentId() : studentHomework.getStudentId())
-                    .homeworkId(studentHomework.getHomeworkId() != null ? studentHomeworkDto.getHomeworkId() : studentHomework.getHomeworkId())
-                    .status(studentHomework.getStatus() != null ? studentHomeworkDto.getStatus() : studentHomework.getStatus())
+                    .id(studentHomeworkDto.getId() != null ? studentHomeworkDto.getId() : studentHomework.getId())
+                    .studentId(studentHomeworkDto.getStudentId() != null ? studentHomeworkDto.getStudentId() : studentHomework.getStudentId())
+                    .homeworkId(studentHomeworkDto.getHomeworkId() != null ? studentHomeworkDto.getHomeworkId() : studentHomework.getHomeworkId())
+                    .status(studentHomeworkDto.getStatus() != null ? studentHomeworkDto.getStatus() : studentHomework.getStatus())
                     .build();
             return ResponseMapper.getResponseDto(200,true,"successfully update",studentHomeworkDto1);
         }
