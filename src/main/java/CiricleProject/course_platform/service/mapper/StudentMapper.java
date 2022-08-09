@@ -4,7 +4,7 @@ import CiricleProject.course_platform.dto.StudentDto;
 import CiricleProject.course_platform.entity.Student;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface StudentMapper {
 
     Student toEntity (StudentDto studentDto);

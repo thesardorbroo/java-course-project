@@ -4,7 +4,7 @@ import CiricleProject.course_platform.dto.CourseDto;
 import CiricleProject.course_platform.entity.Course;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CourseMapper {
      Course toCourse(CourseDto courseDto);
      CourseDto toDto(Course course);

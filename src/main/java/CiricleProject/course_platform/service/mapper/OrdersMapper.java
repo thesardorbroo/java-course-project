@@ -5,7 +5,7 @@ import CiricleProject.course_platform.entity.Orders;
 import org.mapstruct.Mapper;
 import org.springframework.context.annotation.Lazy;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface OrdersMapper {
 
     Orders toEntity (OrdersDto ordersDto);

@@ -4,7 +4,7 @@ import CiricleProject.course_platform.dto.HomeWorkDto;
 import CiricleProject.course_platform.entity.HomeWork;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface HomeWorkMapper  {
     HomeWork ToEntity(HomeWorkDto homeWorkDto);
     HomeWorkDto ToDto(HomeWork homeWork);

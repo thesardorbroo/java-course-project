@@ -4,7 +4,7 @@ import CiricleProject.course_platform.dto.TelegramGroupDto;
 import CiricleProject.course_platform.entity.TelegramGroup;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface TelegramGroupMapper {
     TelegramGroup toEntity(TelegramGroupDto telegramGroupDto);
     TelegramGroupDto ToDto(TelegramGroup telegramGroup);
