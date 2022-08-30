@@ -19,11 +19,13 @@ public class StudentPoint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "student_id")
-    private Integer studentId;
+//    @Column(name = "student_id")
+    @OneToOne
+    private Student student;
 
-    @Column(name = "lesson_id")
-    private Integer lessonId;
+//    @Column(name = "lesson_id")
+    @OneToOne
+    private Lesson lesson;
 
     @Column(name = "point")
     private Integer point;

@@ -3,17 +3,16 @@ package CiricleProject.course_platform.controller;
 import CiricleProject.course_platform.dto.MentorDto;
 import CiricleProject.course_platform.dto.ResponseDto;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import CiricleProject.course_platform.service.impl.MentorServiceImpl;
 
 @RestController
 @RequestMapping("/mentor")
+@RequiredArgsConstructor
 public class MentorController {
     private final MentorServiceImpl mentorimpl;
-    public MentorController(MentorServiceImpl mentorimpl){
 
-        this.mentorimpl = mentorimpl;
-    }
     @GetMapping
     public ResponseDto getAllMentor(){
         return  mentorimpl.getAllMentor();
@@ -31,7 +30,7 @@ public class MentorController {
     public ResponseDto deleteMentor(@PathVariable Integer id){
         return mentorimpl.daleteMentorById(id);
     }
-    @PatchMapping
+    @PostMapping
     public ResponseDto addTelegramGroup(@RequestBody MentorDto mentorDto){
         return mentorimpl.addNewMentor(mentorDto);
     }

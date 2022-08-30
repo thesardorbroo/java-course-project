@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,11 +19,15 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "course_id")
-    private Integer courseId;
+//    @Column(name = "course_id")
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
 
-    @Column(name = "student_id")
-    private Integer studentId;
+//    @Column(name = "student_id")
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 
     @Column(name = "is_paid")
     private Boolean isPaid;

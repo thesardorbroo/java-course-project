@@ -54,8 +54,8 @@ public class OrdersServiceImpl implements OrdersService {
             Orders orders = ordersRepository.findById(ordersDto.getId()).get();
             orders = Orders.builder()
                     .id(ordersDto.getId() != null? ordersDto.getId() : orders.getId())
-                    .courseId(ordersDto.getCourseId() != null? ordersDto.getCourseId() : orders.getCourseId())
-                    .studentId(ordersDto.getStudentId() != null? ordersDto.getStudentId() : orders.getStudentId())
+//                    .courseId(ordersDto.getCourseId() != null? ordersDto.getCourseId() : orders.getCourseId())
+//                    .studentId(ordersDto.getStudentId() != null? ordersDto.getStudentId() : orders.getStudentId())
                     .isPaid(ordersDto.getIsPaid() != null? ordersDto.getIsPaid() : orders.getIsPaid())
                     .build();
 
@@ -95,8 +95,8 @@ public class OrdersServiceImpl implements OrdersService {
         if(!course) return ResponseMapper.getResponseDto(404, false, "Course is not found!", null);
         if(!student) return ResponseMapper.getResponseDto(404, false, "Student is not found!", null);
 
-        Orders orders = Orders.builder().studentId(studentId).courseId(courseId).isPaid(true).build();
-        orders = ordersRepository.save(orders);
+//        Orders orders = Orders.builder().studentId(studentId).courseId(courseId).isPaid(true).build();
+        Orders orders = ordersRepository.save(null);
         return ResponseMapper.getResponseDto(200, false, "Successfully sold!", ordersMapper.toDto(orders));
     }
 }

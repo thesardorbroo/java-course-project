@@ -6,6 +6,7 @@ import CiricleProject.course_platform.entity.HomeWork;
 import CiricleProject.course_platform.mapper.ResponseMapper;
 import CiricleProject.course_platform.repository.HomeWorkRepository;
 import CiricleProject.course_platform.service.mapper.HomeWorkMapper;
+import CiricleProject.course_platform.service.mapper.impl.HomeworkMapperImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import CiricleProject.course_platform.service.HomeWorkServise;
@@ -22,7 +23,7 @@ public class HomeWorkServiceImpl implements HomeWorkServise {
     public ResponseDto getAllHomeWork() {
         List<HomeWork> homeWork = homeWorkRepository.findAll();
         List<HomeWorkDto> list = homeWork.stream()
-                .map(homeWorkMapper::ToDto).toList();
+                .map(HomeworkMapperImpl::toDtoWithout).toList();
         return ResponseMapper.getResponseDto(
                 200,
                 true,
@@ -61,7 +62,7 @@ public class HomeWorkServiceImpl implements HomeWorkServise {
             HomeWorkDto homeWorkDto1 = HomeWorkDto.builder()
                     .id(homeWorkDto.getId()!=null? homeWorkDto.getId():homeWork.getId())
                     .point(homeWorkDto.getPoint()!=null?homeWorkDto.getPoint():homeWork.getPoint())
-                    .lessonId(homeWorkDto.getLessonId()!=null?homeWorkDto.getLessonId():homeWork.getLessonId())
+//                    .lessonId(homeWorkDto.getLessonId()!=null?homeWorkDto.getLessonId():homeWork.getLessonId())
                     .taskBody(homeWorkDto.getTaskBody()!=null?homeWorkDto.getTaskBody():homeWork.getTaskBody())
                     .extraTask(homeWork.getExtraTask()!=null?homeWorkDto.getExtraTask():homeWork.getExtraTask())
                     .build();
@@ -102,7 +103,7 @@ public class HomeWorkServiceImpl implements HomeWorkServise {
 
     @Override
     public ResponseDto addNewHomeWork(HomeWorkDto homeWorkDto) {
-        if(!homeWorkRepository.existsById(homeWorkDto.getId())){
+        if(!homeWorkRepository.existsByTaskBody(homeWorkDto.getTaskBody())){
             HomeWork homeWork = homeWorkRepository.save(homeWorkMapper.ToEntity(homeWorkDto));
             return ResponseMapper.getResponseDto(
                     200,

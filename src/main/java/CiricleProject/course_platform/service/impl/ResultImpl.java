@@ -55,8 +55,8 @@ public class ResultImpl implements ResultService {
             Result result = optional.get();
             ResultDto resultDto1 = ResultDto.builder()
                     .id(resultDto.getId() != null ? resultDto.getId() : result.getId())
-                    .studentId(resultDto.getStudentId() != null ? resultDto.getStudentId() : result.getStudentId())
-                    .lessonId(resultDto.getLessonId() != null ? resultDto.getLessonId() : result.getLessonId())
+//                    .studentId(resultDto.getStudentId() != null ? resultDto.getStudentId() : result.getStudentId())
+//                    .lessonId(resultDto.getLessonId() != null ? resultDto.getLessonId() : result.getLessonId())
                     .status(resultDto.getStatus() != null ? resultDto.getStatus() : result.getStatus())
                     .build();
             return ResponseMapper.getResponseDto(200,true,"successfully getById",resultDto1);

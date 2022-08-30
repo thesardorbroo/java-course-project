@@ -59,8 +59,8 @@ public class StudentPointServiceImpl implements StudentPointService {
             StudentPoint studentPoint = repository.findById(studentPointDto.getId()).get();
             studentPoint = StudentPoint.builder()
                     .id(studentPointDto.getId() != null? studentPointDto.getId() : studentPoint.getId())
-                    .studentId(studentPointDto.getStudentId() != null? studentPointDto.getStudentId() : studentPoint.getStudentId())
-                    .lessonId(studentPointDto.getLessonId() != null? studentPointDto.getLessonId() : studentPoint.getLessonId())
+//                    .studentId(studentPointDto.getStudentId() != null? studentPointDto.getStudentId() : studentPoint.getStudentId())
+//                    .lessonId(studentPointDto.getLessonId() != null? studentPointDto.getLessonId() : studentPoint.getLessonId())
                     .point(studentPointDto.getPoint() != null? studentPointDto.getPoint() : studentPoint.getPoint())
                     .build();
 

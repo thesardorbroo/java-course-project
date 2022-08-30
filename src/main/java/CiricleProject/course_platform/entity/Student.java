@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.criterion.Order;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -33,4 +35,13 @@ public class Student {
     private String username;
 
     private String password;
+
+    @OneToMany(mappedBy = "student")
+    private List<StudentHomework> studentHomework;
+
+    @OneToMany(mappedBy = "student")
+    private List<Result> result;
+
+    @OneToMany(mappedBy = "student")
+    private List<Orders> orders;
 }

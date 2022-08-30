@@ -9,9 +9,9 @@ public class StudentPointDto {
 
     private Integer id;
 
-    private Integer studentId;
+    private StudentDto student;
 
-    private Integer lessonId;
+    private LessonDto lesson;
 
     private Integer point;
 

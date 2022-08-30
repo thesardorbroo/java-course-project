@@ -22,11 +22,15 @@ public class StudentHomework {
     @Id
     private Integer id;
 
-    @Column(name = "student_id")
-    private Integer studentId;
+//    @Column(name = "student_id")
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 
-    @Column(name = "homework_id")
-    private Integer homeworkId;
+//    @Column(name = "homework_id")
+    @ManyToOne
+    @JoinColumn(name = "homeWork_id")
+    private HomeWork homeWork;
 
     private Boolean status;
 }

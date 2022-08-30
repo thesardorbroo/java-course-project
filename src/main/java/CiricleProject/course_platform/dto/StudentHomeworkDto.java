@@ -7,17 +7,17 @@ import lombok.Data;
 @Builder
 public class StudentHomeworkDto {
     private Integer id;
-    private Integer studentId;
-    private Integer homeworkId;
+    private StudentDto student;
+    private HomeWorkDto homeWork;
     private Boolean status;
 
-    @Override
-    public String toString() {
-        return "StudentHomeworkDto{" +
-                "id=" + id +
-                ", studentId=" + studentId +
-                ", homeworkId=" + homeworkId +
-                ", status=" + status +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "StudentHomeworkDto{" +
+//                "id=" + id +
+//                ", studentId=" + studentId +
+//                ", homeworkId=" + homeworkId +
+//                ", status=" + status +
+//                '}';
+//    }
 }

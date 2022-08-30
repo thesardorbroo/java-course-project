@@ -20,11 +20,13 @@ public class Result {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "student_id")
-    private Integer studentId;
+//    @Column(name = "student_id")
+    @ManyToOne
+    private Student student;
 
-    @Column(name = "lesson_id")
-    private Integer lessonId;
+//    @Column(name = "lesson_id")
+//    @OneToOne(mappedBy = "")
+//    private Lesson lesson;
 
     private Boolean status;
 }

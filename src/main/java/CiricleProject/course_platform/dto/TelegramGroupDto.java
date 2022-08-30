@@ -11,7 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TelegramGroupDto {
     private Integer id;
+
     private String groupName;
-    private Integer courseId;
+
+    private CourseDto course;
+
     private String courseLink;
 }

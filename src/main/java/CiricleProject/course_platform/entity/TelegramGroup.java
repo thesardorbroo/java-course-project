@@ -16,10 +16,14 @@ public class TelegramGroup {
     @SequenceGenerator(name = "Telegram_seq")
     @SequenceGenerator(name = "Telegram_seq",sequenceName = "Telegrm_id_seq",allocationSize = 1)
     private Integer id;
+
     @Column(name = "group_name")
     private String groupName;
-    @Column(name = "course_id")
-    private Integer courseId;
+
+//    @Column(name = "course_id")
+    @OneToOne
+    private Course course;
+
     @Column(name = "course_link")
     private String courseLink;
 

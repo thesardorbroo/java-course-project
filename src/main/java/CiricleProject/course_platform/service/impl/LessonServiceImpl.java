@@ -7,6 +7,7 @@ import CiricleProject.course_platform.mapper.ResponseMapper;
 import CiricleProject.course_platform.repository.LessonRepository;
 import CiricleProject.course_platform.service.LessonService;
 import CiricleProject.course_platform.service.mapper.LessonMapper;
+import CiricleProject.course_platform.service.mapper.impl.LessonMapperImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +40,7 @@ public class LessonServiceImpl implements LessonService {
     @Override
     public ResponseDto getAllLessons() {
         List<Lesson> lessons = lessonRepository.findAll();
-        List<LessonDto> list = lessons.stream().map(lessonMapper::toDto).toList();
+        List<LessonDto> list = lessons.stream().map(LessonMapperImpl::toDtoWithout).toList();
         if(list != null){
             return ResponseMapper.getResponseDto(200, true, "Data is found!", list);
 
@@ -55,7 +56,7 @@ public class LessonServiceImpl implements LessonService {
             LessonDto demo2 = lessonDto.builder()
                     .id(lessonDto.getId() != null? lessonDto.getId() : lesson.getId())
                     .lessonName(lessonDto.getLessonName() != null? lessonDto.getLessonName() : lesson.getLessonName())
-                    .courseId(lessonDto.getCourseId() != null? lessonDto.getCourseId() : lesson.getCourseId())
+//                    .courseId(lessonDto.getCourseId() != null? lessonDto.getCourseId() : lesson.getCourseId())
                     .lessonLength(lessonDto.getLessonLength() != null? lessonDto.getLessonLength() : lesson.getLessonLength())
                     .videoAddress(lessonDto.getVideoAddress() != null? lessonDto.getVideoAddress() : lesson.getVideoAddress())
                     .build();
@@ -83,7 +84,7 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public ResponseDto addNewLesson(LessonDto lessonDto) {
-        if(!lessonRepository.existsById(lessonDto.getId())){
+        if(!lessonRepository.existsByLessonName(lessonDto.getLessonName())){
             Lesson lesson = lessonRepository.save(lessonMapper.toEntity(lessonDto));
             return ResponseMapper.getResponseDto(200, true, "Successully saved!", lessonMapper.toDto(lesson));
         }

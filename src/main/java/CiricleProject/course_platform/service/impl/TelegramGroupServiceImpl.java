@@ -78,7 +78,7 @@ public class TelegramGroupServiceImpl implements TelegramGroupService {
             TelegramGroupDto telegramGroupDto1  = TelegramGroupDto.builder()
                     .id(telegramGroupDto.getId() !=null ? telegramGroupDto.getId():telegramGroup.getId())
                     .groupName(telegramGroupDto.getGroupName()!=null?telegramGroupDto.getGroupName():telegramGroup.getGroupName())
-                    .courseId(telegramGroupDto.getCourseId()!=null? telegramGroupDto.getCourseId():telegramGroup.getCourseId())
+//                    .courseId(telegramGroupDto.getCourseId()!=null? telegramGroupDto.getCourseId():telegramGroup.getCourseId())
                     .courseLink(telegramGroupDto.getCourseLink()!=null?telegramGroupDto.getCourseLink():telegramGroup.getCourseLink())
                     .build();
             return ResponseMapper.getResponseDto(

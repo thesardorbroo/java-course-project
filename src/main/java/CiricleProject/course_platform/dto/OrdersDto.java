@@ -9,9 +9,9 @@ public class OrdersDto {
 
     private Integer id;
 
-    private Integer courseId;
+    private CourseDto course;
 
-    private Integer studentId;
+    private StudentDto student;
 
     private Boolean isPaid;
 }

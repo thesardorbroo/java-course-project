@@ -7,17 +7,9 @@ import lombok.Data;
 @Builder
 public class ResultDto {
     private Integer id;
-    private Integer studentId;
-    private Integer lessonId;
+
+    private StudentDto student;
+
     private Boolean status;
 
-    @Override
-    public String toString() {
-        return "ResultDto{" +
-                "id=" + id +
-                ", studentId=" + studentId +
-                ", lessonId=" + lessonId +
-                ", status=" + status +
-                '}';
-    }
 }

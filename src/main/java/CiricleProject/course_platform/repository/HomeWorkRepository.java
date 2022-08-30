@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface HomeWorkRepository extends JpaRepository<HomeWork,Integer> {
 
+    boolean existsByTaskBody(String taskBody);
 }
 

@@ -6,7 +6,8 @@ import CiricleProject.course_platform.entity.Course;
 import CiricleProject.course_platform.mapper.ResponseMapper;
 import CiricleProject.course_platform.repository.CourseRepository;
 import CiricleProject.course_platform.service.CourseService;
-import CiricleProject.course_platform.service.mapper.CourseMapperImpl;
+import CiricleProject.course_platform.service.mapper.CourseMapper;
+import CiricleProject.course_platform.service.mapper.impl.CourseMapperImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,9 @@ import java.util.Optional;
 public class CourseImpl implements CourseService {
 
     private final CourseRepository courseRepository;
-    private final CourseMapperImpl courseMapper;
+    private final CourseMapper courseMapper;
+
+//    private final CourseMapperImpl courseMapperImpl;
 
 
     @Override
@@ -42,7 +45,7 @@ public class CourseImpl implements CourseService {
         Optional<Course> optional = courseRepository.findById(id);
         if (optional.isPresent()){
             Course course = optional.get();
-            CourseDto courseDto = courseMapper.toDto(course);
+            CourseDto courseDto = CourseMapperImpl.toDtoWithoutMentor(course);
             return ResponseMapper.getResponseDto(200,true, "Data is found!", courseDto);
         }
 
@@ -56,9 +59,9 @@ public class CourseImpl implements CourseService {
     public ResponseDto getCourse() {
 
         List<Course> courses = courseRepository.findAll();
-        List<CourseDto> courseDtos = courses.stream()
-                .map(courseMapper::toDto).toList();
-        return ResponseMapper.getResponseDto(200,true, "Data is found!", courseDtos);
+        List<CourseDto> courseDto = courses.stream()
+                .map(CourseMapperImpl::toDtoWithoutMentor).toList();
+        return ResponseMapper.getResponseDto(200,true, "Data is found!", courseDto);
 
     }
 
@@ -71,7 +74,7 @@ public class CourseImpl implements CourseService {
             CourseDto courseDto1 = CourseDto.builder()
                     .id(courseDto.getId() != null? courseDto.getId() : course.getId())
                     .courseName(courseDto.getCourseName() != null? courseDto.getCourseName() : course.getCourseName())
-                    .mentorId(courseDto.getMentorId() != null? courseDto.getMentorId() : course.getMentorId())
+//                    .mentorId(courseDto.getMentorId() != null? courseDto.getMentorId() : course.getMentorId())
                     .status(courseDto.getStatus() != null? courseDto.getStatus() : course.getStatus())
                     .coursePrice((courseDto.getCoursePrice() != null? courseDto.getCoursePrice() : course.getCoursePrice()))
                     .build();
