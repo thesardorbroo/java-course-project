@@ -65,7 +65,7 @@ public class  MentorServiceImpl implements MentorService {
                     .id(mentorDto.getId() != null ? mentorDto.getId() : mentor.getId())
                     .name(mentorDto.getName() != null ? mentorDto.getName() : mentor.getName())
                     .age(mentorDto.getAge() != null ? mentorDto.getAge() : mentor.getAge())
-                    .experience(mentorDto.getExperience() != null ? mentorDto.getExperience():mentor.getExperiense())
+                    .experience(mentorDto.getExperience() != null ? mentorDto.getExperience():mentor.getExperience())
                     .build();
             return ResponseMapper.getResponseDto(200,true ,"Date is found",mentorDto1);
 

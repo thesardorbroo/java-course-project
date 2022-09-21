@@ -10,6 +10,8 @@ import CiricleProject.course_platform.service.mapper.TelegramGroupMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.List;
 import java.util.Optional;
 
@@ -112,5 +114,6 @@ public class TelegramGroupServiceImpl implements TelegramGroupService {
                 false,
                 "Data is not found",
                null);
+
     }
 }

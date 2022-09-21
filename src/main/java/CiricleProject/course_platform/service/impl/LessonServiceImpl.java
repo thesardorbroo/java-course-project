@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 
@@ -21,7 +20,6 @@ public class LessonServiceImpl implements LessonService {
     private final LessonRepository lessonRepository;
 
     private final LessonMapper lessonMapper;
-
 
     @Override
     public ResponseDto getLessonById(Integer id) {
@@ -87,7 +85,6 @@ public class LessonServiceImpl implements LessonService {
             Lesson lesson = lessonRepository.save(lessonMapper.toEntity(lessonDto));
             return ResponseMapper.getResponseDto(200, true, "Successully saved!", lessonMapper.toDto(lesson));
         }
-
         return ResponseMapper.getResponseDto(404, false, "Data is already exists!", null);
     }
 }

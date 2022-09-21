@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface MentorRepository extends JpaRepository<Mentor,Integer> {
     Boolean existsByKey(String key);
 
+
 }
